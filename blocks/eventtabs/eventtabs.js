@@ -1,10 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import { toClassName } from '../../scripts/aem.js';
 
-function hasWrapper(el) {
-  return !!el.firstElementChild && window.getComputedStyle(el.firstElementChild).display === 'block';
-}
-
 export default async function decorate(block) {
   // build tablist
   const tablist = document.createElement('div');
@@ -53,7 +49,7 @@ export default async function decorate(block) {
       // tabpanel.setAttribute('aria-hidden', false);
       document.querySelectorAll(`.event-type-${eventType}`).forEach((eventDiv) => {
         eventDiv.removeAttribute('hidden');
-      })
+      });
 
       button.setAttribute('aria-selected', true);
     });
@@ -61,6 +57,6 @@ export default async function decorate(block) {
     tab.remove();
   });
 
-  block.textContent = "";
+  block.textContent = '';
   block.prepend(tablist);
 }
